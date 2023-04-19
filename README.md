@@ -3,6 +3,8 @@ EasyOrder is a powerful point of sale system program built using Java, MySQL, an
 With its intuitive user interface and seamless integration with other software, EasyOrder makes it easy for businesses of all sizes to streamline their operations and boost their efficiency. Whether you're running a small coffee shop or a large retail store, EasyOrder is the perfect solution for all your point of sale needs.
 
 &nbsp;
+&nbsp;
+&nbsp;
 ![4](https://user-images.githubusercontent.com/92091536/232839201-68cf7bea-ec51-4316-9450-18dbde85a561.jpg)
 
 Flori Vula 212257184 <br>
