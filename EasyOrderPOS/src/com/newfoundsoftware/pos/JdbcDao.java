@@ -44,6 +44,17 @@ public class JdbcDao {
         return false;
     }
     
+    //klase per te bere lidhjen e databazes
+    public Connection getConnection(){
+        try{
+            Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+            return connection;
+        }catch(SQLException ex){
+            printSQLException(ex);
+        }
+        return null;
+    }
+    
     public static void printSQLException(SQLException ex){
         //per mi pas debugging ma t'leht gjate vazhdimit te projektit
         for(Throwable e: ex){

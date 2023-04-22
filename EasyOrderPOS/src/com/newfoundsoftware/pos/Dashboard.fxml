@@ -18,7 +18,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.newfoundsoftware.pos.DashboardController">
    <center>
       <AnchorPane id="AnchorPane" prefHeight="609.0" prefWidth="635.0" style="-fx-background-color: #deecfb;">
@@ -144,7 +143,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="529.0" layoutY="20.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="159.0" style="-fx-background-color: #7ab3ef;" text="F5 - Manage Table" textFill="#1666ba">
+            <Button fx:id="btnManageTable" layoutX="529.0" layoutY="20.0" mnemonicParsing="false" onAction="#manageTable" prefHeight="54.0" prefWidth="159.0" style="-fx-background-color: #7ab3ef;" text="F5 - Manage Table" textFill="#1666ba">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -166,7 +165,7 @@
       <VBox prefHeight="609.0" prefWidth="199.0" spacing="10.0" style="-fx-background-color: #bedaf7;" BorderPane.alignment="CENTER">
          <children>
             <Pane prefHeight="60.0" prefWidth="200.0" />
-            <Button layoutX="20.0" layoutY="133.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="200.0" style="-fx-background-color: #7ab3ef;" text="DRNKS" textFill="#1666ba">
+            <Button layoutX="20.0" layoutY="133.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="200.0" style="-fx-background-color: #7ab3ef;" text="DRINKS" textFill="#1666ba">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
