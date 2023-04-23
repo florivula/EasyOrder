@@ -49,6 +49,7 @@ public class TablesController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        addListenerForTable();
         // lidhja e jdbcdao file
         jdbc = new JdbcDao();
         showTable();
@@ -112,6 +113,47 @@ public class TablesController implements Initializable {
     @FXML
     private void saveTable(ActionEvent event) {
         insertRecord();
+    }
+    
+    private void addListenerForTable(){
+        tableTables.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if(newSelection != null){
+                btnUpdate.setDisable(false);
+                btnDelete.setDisable(false);
+                
+                tfTableName.setText(newSelection.getName()); //newSelection kthen tables object qe i kemi kriju en tables.java
+            }else{
+                tfTableName.setText(""); 
+                btnUpdate.setDisable(true);
+                btnDelete.setDisable(true);
+            }
+        });
+    }
+
+    @FXML
+    private void editEntry(ActionEvent event) {
+        Connection conn = jdbc.getConnection();
+        try{
+            Tables table = tableTables.getSelectionModel().getSelectedItem();
+            String query = "UPDATE tblTables SET name = '" + tfTableName.getText() + " ' WHERE id = '" + table.getId() + "'"; //query per update
+            executeQuery(query);
+            showTable();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @FXML
+    private void deleteEntry(ActionEvent event) {
+        Connection conn = jdbc.getConnection();
+        try{
+            Tables table = tableTables.getSelectionModel().getSelectedItem();
+            String query = "DELETE FROM tbltables WHERE id = '" + table.getId() + "'"; //query per delete
+            executeQuery(query);
+            showTable();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
     }
     
 }
