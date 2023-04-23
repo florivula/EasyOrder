@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="209.0" prefWidth="385.0" style="-fx-background-color: #bedaf7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.newfoundsoftware.pos.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="209.0" prefWidth="385.0" style="-fx-background-color: #111315;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.newfoundsoftware.pos.LoginController">
    <children>
-      <TextField fx:id="txtUsername" layoutX="129.0" layoutY="73.0" prefHeight="26.0" prefWidth="199.0" style="-fx-background-color: #deecfb;" />
-      <PasswordField fx:id="txtPassword" layoutX="128.0" layoutY="113.0" prefHeight="26.0" prefWidth="199.0" style="-fx-background-color: #deecfb;" />
-      <Button layoutX="169.0" layoutY="157.0" mnemonicParsing="false" onAction="#actionLogin" style="-fx-background-color: #deecfb;" text="Login" textFill="#1666ba" />
+      <TextField fx:id="txtUsername" layoutX="129.0" layoutY="73.0" prefHeight="26.0" prefWidth="199.0" style="-fx-background-color: #292c2d; -fx-text-fill: white;" />
+      <PasswordField fx:id="txtPassword" layoutX="128.0" layoutY="113.0" prefHeight="26.0" prefWidth="199.0" style="-fx-background-color: #292c2d;" />
+      <Button layoutX="169.0" layoutY="157.0" mnemonicParsing="false" onAction="#actionLogin" style="-fx-background-color: #1666ba;" text="Login" textFill="#deecfb" />
       <Label layoutX="56.0" layoutY="77.0" text="Username" textFill="#368ce7" />
       <Label layoutX="57.0" layoutY="118.0" text="Password" textFill="#368ce7" />
       <Label layoutX="168.0" layoutY="23.0" text="Login" textFill="#1666ba">

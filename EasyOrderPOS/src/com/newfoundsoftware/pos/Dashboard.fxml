@@ -20,22 +20,22 @@
 
 <BorderPane prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.newfoundsoftware.pos.DashboardController">
    <center>
-      <AnchorPane id="AnchorPane" prefHeight="609.0" prefWidth="635.0" style="-fx-background-color: #deecfb;">
+      <AnchorPane id="AnchorPane" prefHeight="609.0" prefWidth="635.0" style="-fx-background-color: #111315;">
          <children>
-            <Label fx:id="lblUsername" layoutX="14.0" layoutY="551.0" prefHeight="43.0" prefWidth="226.0" text="***" />
-            <StackPane layoutX="27.0" layoutY="27.0" prefHeight="150.0" prefWidth="200.0" style="-fx-border-color: #7ab3ef;">
+            <Label fx:id="lblUsername" layoutX="561.0" layoutY="551.0" prefHeight="43.0" prefWidth="117.0" text="***" textFill="WHITE" />
+            <StackPane layoutX="27.0" layoutY="27.0" prefHeight="150.0" prefWidth="200.0" style="-fx-border-color: #292c2d;">
                <children>
                   <ImageView fitHeight="151.0" fitWidth="262.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../Assets/images/espresso.jpg" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="40.0" style="-fx-background-color: #7ab3efb3;" text="1.00€" textFill="#deecfb" StackPane.alignment="BOTTOM_LEFT">
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="40.0" style="-fx-background-color: #292c2d;" text="1.00€" textFill="#deecfb" StackPane.alignment="BOTTOM_LEFT">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="11.0" layoutY="136.0" prefHeight="27.0" prefWidth="269.0" style="-fx-background-color: #7ab3efb3;" text="Espresso" textFill="#deecfb" StackPane.alignment="TOP_CENTER">
+                  <Label layoutX="11.0" layoutY="136.0" prefHeight="27.0" prefWidth="269.0" style="-fx-background-color: #292c2d;" text="Espresso" textFill="#deecfb" StackPane.alignment="TOP_CENTER">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -45,19 +45,19 @@
                   </Label>
                </children>
             </StackPane>
-            <StackPane layoutX="291.0" layoutY="27.0" prefHeight="150.0" prefWidth="200.0" style="-fx-border-color: #7ab3ef;">
+            <StackPane layoutX="291.0" layoutY="27.0" prefHeight="150.0" prefWidth="200.0" style="-fx-border-color: #292c2d;">
                <children>
                   <ImageView fitHeight="151.0" fitWidth="262.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../Assets/images/macchiato.jpg" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="40.0" style="-fx-background-color: #7ab3efb3;" text="1.00€" textFill="#deecfb" StackPane.alignment="BOTTOM_LEFT">
+                  <Label alignment="CENTER" prefHeight="27.0" prefWidth="40.0" style="-fx-background-color: #292c2d;" text="1.00€" textFill="#deecfb" StackPane.alignment="BOTTOM_LEFT">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="11.0" layoutY="136.0" prefHeight="27.0" prefWidth="269.0" style="-fx-background-color: #7ab3efb3;" text="Macchiato" textFill="#deecfb" StackPane.alignment="TOP_CENTER">
+                  <Label layoutX="11.0" layoutY="136.0" prefHeight="27.0" prefWidth="269.0" style="-fx-background-color: #292c2d;" text="Macchiato" textFill="#deecfb" StackPane.alignment="TOP_CENTER">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -67,13 +67,18 @@
                   </Label>
                </children>
             </StackPane>
+            <ImageView fitHeight="255.0" fitWidth="418.0" layoutX="14.0" layoutY="342.0" opacity="0.8">
+               <image>
+                  <Image url="@../../../../../../sistemi%20per%20pc/Graphic%20Design/logo/easyorder%20logo/final/PNG-logo-E%20PRENE%20BACKGROUND.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </center>
    <top>
-      <MenuBar BorderPane.alignment="CENTER">
+      <MenuBar style="-fx-background-color: #111315;" BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" style="-fx-color: white;" text="File">
             <items>
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
@@ -92,7 +97,7 @@
       </MenuBar>
    </top>
    <right>
-      <VBox prefHeight="609.0" prefWidth="408.0" spacing="10.0" style="-fx-background-color: #bedaf7;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="609.0" prefWidth="408.0" spacing="10.0" style="-fx-background-color: #292c2d;" BorderPane.alignment="CENTER">
          <children>
             <Pane prefHeight="60.0" prefWidth="200.0">
                <children>
@@ -103,12 +108,12 @@
                   </Label>
                </children>
             </Pane>
-            <TableView prefHeight="200.0" prefWidth="200.0">
+            <TableView prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #111315;">
               <columns>
-                <TableColumn prefWidth="75.0" text="Description" />
-                <TableColumn prefWidth="75.0" text="Price" />
-                  <TableColumn prefWidth="75.0" text="Order" />
-                  <TableColumn prefWidth="75.0" text="Total" />
+                <TableColumn prefWidth="75.0" style="-fx-background-color: #1666ba;" text="Description" />
+                <TableColumn prefWidth="75.0" style="-fx-background-color: #1666ba;" text="Price" />
+                  <TableColumn prefWidth="75.0" style="-fx-background-color: #1666ba;" text="Order" />
+                  <TableColumn prefWidth="161.60006713867188" style="-fx-background-color: #1666ba;" text="Total" />
               </columns>
             </TableView>
          </children>
@@ -118,37 +123,37 @@
       </VBox>
    </right>
    <bottom>
-      <HBox prefHeight="65.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #bedaf7;" BorderPane.alignment="CENTER">
+      <HBox prefHeight="65.0" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #292c2d;" BorderPane.alignment="CENTER">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
          <children>
-            <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="159.0" style="-fx-background-color: #368ce7;" text="F1 - New Order" textFill="#deecfb" HBox.hgrow="ALWAYS">
+            <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="159.0" style="-fx-background-color: #111315;" text="F1 - New Order" textFill="#deecfb" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="159.0" style="-fx-background-color: #7ab3ef;" text="F2 - Payment" textFill="#1666ba">
+            <Button layoutX="20.0" layoutY="20.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="159.0" style="-fx-background-color: #111315;" text="F2 - Payment" textFill="#1666ba">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="190.0" layoutY="20.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="159.0" style="-fx-background-color: #7ab3ef;" text="F3 - Cancel Order" textFill="#1666ba">
+            <Button layoutX="190.0" layoutY="20.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="159.0" style="-fx-background-color: #111315;" text="F3 - Cancel Order" textFill="#1666ba">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="360.0" layoutY="20.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="159.0" style="-fx-background-color: #7ab3ef;" text="F4 - Manage Product" textFill="#1666ba">
+            <Button layoutX="360.0" layoutY="20.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="159.0" style="-fx-background-color: #111315;" text="F4 - Manage Product" textFill="#1666ba">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="btnManageTable" layoutX="529.0" layoutY="20.0" mnemonicParsing="false" onAction="#manageTable" prefHeight="54.0" prefWidth="159.0" style="-fx-background-color: #7ab3ef;" text="F5 - Manage Table" textFill="#1666ba">
+            <Button fx:id="btnManageTable" layoutX="529.0" layoutY="20.0" mnemonicParsing="false" onAction="#manageTable" prefHeight="54.0" prefWidth="159.0" style="-fx-background-color: #111315;" text="F5 - Manage Table" textFill="#1666ba">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="699.0" layoutY="20.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="159.0" style="-fx-background-color: #7ab3ef;" text="F6 - Sales Report" textFill="#1666ba">
+            <Button layoutX="699.0" layoutY="20.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="159.0" style="-fx-background-color: #111315;" text="F6 - Sales Report" textFill="#1666ba">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -162,25 +167,25 @@
       </HBox>
    </bottom>
    <left>
-      <VBox prefHeight="609.0" prefWidth="199.0" spacing="10.0" style="-fx-background-color: #bedaf7;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="609.0" prefWidth="199.0" spacing="10.0" style="-fx-background-color: #292c2d;" BorderPane.alignment="CENTER">
          <children>
             <Pane prefHeight="60.0" prefWidth="200.0" />
-            <Button layoutX="20.0" layoutY="133.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="200.0" style="-fx-background-color: #7ab3ef;" text="DRINKS" textFill="#1666ba">
+            <Button layoutX="20.0" layoutY="133.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="200.0" style="-fx-background-color: #1666ba;" text="DRINKS" textFill="#deecfb">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="20.0" layoutY="91.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="200.0" style="-fx-background-color: #7ab3ef;" text="DESSERT" textFill="#1666ba">
+            <Button layoutX="20.0" layoutY="91.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="200.0" style="-fx-background-color: #1666ba;" text="DESSERT" textFill="#deecfb">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="20.0" layoutY="176.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="200.0" style="-fx-background-color: #7ab3ef;" text="MEAL" textFill="#1666ba">
+            <Button layoutX="20.0" layoutY="176.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="200.0" style="-fx-background-color: #1666ba;" text="MEAL" textFill="#deecfb">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="200.0" style="-fx-background-color: #7ab3ef;" text="DRINKS" textFill="#1666ba">
+            <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="200.0" style="-fx-background-color: #1666ba;" text="DRINKS" textFill="#deecfb">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
