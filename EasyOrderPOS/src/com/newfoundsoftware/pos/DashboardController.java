@@ -68,4 +68,13 @@ public class DashboardController implements Initializable {
         window.setTitle(title);
         window.showAndWait();
     }
+
+    @FXML
+    private void actionManageProduct(ActionEvent event) {
+        try{
+            openModalWindow("Products.fxml","Manage Products");
+        }catch(Exception ex){
+            
+        }
+    }
 }

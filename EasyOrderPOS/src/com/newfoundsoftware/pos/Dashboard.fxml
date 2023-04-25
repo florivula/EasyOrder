@@ -143,7 +143,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="360.0" layoutY="20.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="159.0" style="-fx-background-color: #111315;" text="F4 - Manage Product" textFill="#1666ba">
+            <Button layoutX="360.0" layoutY="20.0" mnemonicParsing="false" onAction="#actionManageProduct" prefHeight="54.0" prefWidth="159.0" style="-fx-background-color: #111315;" text="F4 - Manage Product" textFill="#1666ba">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
