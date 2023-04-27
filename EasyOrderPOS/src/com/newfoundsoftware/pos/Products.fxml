@@ -52,7 +52,7 @@
             <HBox prefHeight="39.0" prefWidth="234.0" spacing="5.0">
                <children>
                   <ComboBox fx:id="cbCategories" prefHeight="32.0" prefWidth="180.0" />
-                  <Button fx:id="btnSave1" mnemonicParsing="false" onAction="#saveTable" prefHeight="32.0" prefWidth="54.0" style="-fx-background-color: #1666ba;" text="Add" textFill="#deecfb">
+                  <Button fx:id="btnSave1" mnemonicParsing="false" onAction="#actionAddCategory" prefHeight="32.0" prefWidth="54.0" style="-fx-background-color: #1666ba;" text="Add" textFill="#deecfb">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

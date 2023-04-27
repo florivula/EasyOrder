@@ -18,9 +18,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import javafx.event.ActionEvent;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
