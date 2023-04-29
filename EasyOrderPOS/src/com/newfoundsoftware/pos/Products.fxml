@@ -39,19 +39,19 @@
          <children>
             <Pane id="imageBox" prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css">
                <children>
-                  <ImageView fx:id="ivProduct" fitHeight="179.0" fitWidth="217.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="ivProduct" fitHeight="179.0" fitWidth="217.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #111315;" />
                </children>
             </Pane>
             <Label text="ID (AutoIncrement)" textFill="#deecfb" />
-            <TextField fx:id="edId" />
+            <TextField fx:id="edId" style="-fx-background-color: #111315;" />
             <Label text="Description" textFill="#deecfb" />
-            <TextField fx:id="etDescription" />
+            <TextField fx:id="etDescription" style="-fx-background-color: #111315;" />
             <Label text="Price" textFill="#deecfb" />
-            <TextField fx:id="etPrice" />
+            <TextField fx:id="etPrice" style="-fx-background-color: #111315;" />
             <Label text="Category" textFill="#deecfb" />
             <HBox prefHeight="39.0" prefWidth="234.0" spacing="5.0">
                <children>
-                  <ComboBox fx:id="cbCategories" prefHeight="32.0" prefWidth="180.0" />
+                  <ComboBox fx:id="cbCategories" prefHeight="32.0" prefWidth="180.0" style="-fx-background-color: #111315;" />
                   <Button fx:id="btnSave1" mnemonicParsing="false" onAction="#actionAddCategory" prefHeight="32.0" prefWidth="54.0" style="-fx-background-color: #1666ba;" text="Add" textFill="#deecfb">
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -60,9 +60,9 @@
                </children>
             </HBox>
             <Label text="Weight" textFill="#deecfb" />
-            <ComboBox fx:id="cbWeight" prefHeight="32.0" prefWidth="238.0" />
+            <ComboBox fx:id="cbWeight" prefHeight="32.0" prefWidth="238.0" style="-fx-background-color: #111315;" />
             <Label text="Status" textFill="#deecfb" />
-            <ComboBox fx:id="cbStatus" prefHeight="32.0" prefWidth="243.0" />
+            <ComboBox fx:id="cbStatus" prefHeight="32.0" prefWidth="243.0" style="-fx-background-color: #111315;" />
             <Button fx:id="btnSave" mnemonicParsing="false" onAction="#saveTable" prefHeight="32.0" prefWidth="236.0" style="-fx-background-color: #1666ba;" text="Save" textFill="#deecfb">
                <font>
                   <Font name="System Bold" size="12.0" />
