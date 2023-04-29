@@ -53,7 +53,7 @@ public class ProductsController implements Initializable {
     @FXML
     private TextField etPrice;
     @FXML
-    private ComboBox<?> cbCategories;
+    private ComboBox<String> cbCategories;
     @FXML
     private Button btnSave1;
     @FXML
@@ -86,6 +86,7 @@ public class ProductsController implements Initializable {
         // TODO
         jdbc = new JdbcDao();
         showProducts();
+        populateCategories();
     }    
 
     @FXML
@@ -179,6 +180,29 @@ public class ProductsController implements Initializable {
         }catch(Exception ex){
             
         }
+    }
+    //mbush combo-box e kategorive me kategori
+    private void populateCategories() {
+        Connection conn = jdbc.getConnection();
+        Statement st;
+        //System.out.println(query);
+        ObservableList<String> list = FXCollections.observableArrayList();
+        try{
+            //st = conn.createStatement();
+            //st.executeUpdate(query);
+            
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM categories");
+            while(rs.next()){
+                list.add(rs.getString("name"));
+                //cbCategories.add(rs.getString("name"));
+            }
+        }catch(Exception ex){
+            System.out.println("error while inserting record.");
+            ex.printStackTrace();
+        }
+        
+        cbCategories.setItems(null); //e bojim empty combo-boxin para se mi shtu listen
+        cbCategories.setItems(list);
     }
     
 }
