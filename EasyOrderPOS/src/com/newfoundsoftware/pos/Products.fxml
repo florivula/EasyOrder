@@ -28,7 +28,7 @@
       </Button>
       <TableView fx:id="tableProducts" layoutX="257.0" layoutY="100.0" prefHeight="512.0" prefWidth="570.0" style="-fx-background-color: #111315;">
          <columns>
-            <TableColumn fx:id="colD" prefWidth="108.0" style="-fx-background-color: #1666ba;" text="ID" />
+            <TableColumn fx:id="colD" prefWidth="108.0" style="-fx-background-color: #1666ba; -fx-text-fill: white;" text="ID" />
             <TableColumn fx:id="colDescription" minWidth="200.0" prefWidth="97.5999755859375" style="-fx-background-color: #1666ba;" text="Description" />
             <TableColumn fx:id="colPrice" prefWidth="97.5999755859375" style="-fx-background-color: #1666ba;" text="Price" />
             <TableColumn fx:id="colCategory" prefWidth="97.5999755859375" style="-fx-background-color: #1666ba;" text="Category" />
@@ -37,17 +37,17 @@
       </TableView>
       <VBox layoutX="14.0" layoutY="31.0" prefHeight="596.0" prefWidth="234.0" spacing="5.0">
          <children>
-            <Pane id="imageBox" prefHeight="200.0" prefWidth="200.0" stylesheets="@style.css">
+            <Pane id="imageBox" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #111315;" stylesheets="@style.css">
                <children>
                   <ImageView fx:id="ivProduct" fitHeight="179.0" fitWidth="217.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #111315;" />
                </children>
             </Pane>
             <Label text="ID (AutoIncrement)" textFill="#deecfb" />
-            <TextField fx:id="edId" style="-fx-background-color: #111315;" />
+            <TextField fx:id="edId" style="-fx-background-color: #111315; -fx-text-fill: white;" />
             <Label text="Description" textFill="#deecfb" />
-            <TextField fx:id="etDescription" style="-fx-background-color: #111315;" />
+            <TextField fx:id="etDescription" style="-fx-background-color: #111315; -fx-text-fill: white;" />
             <Label text="Price" textFill="#deecfb" />
-            <TextField fx:id="etPrice" style="-fx-background-color: #111315;" />
+            <TextField fx:id="etPrice" style="-fx-background-color: #111315; -fx-text-fill: white;" />
             <Label text="Category" textFill="#deecfb" />
             <HBox prefHeight="39.0" prefWidth="234.0" spacing="5.0">
                <children>
