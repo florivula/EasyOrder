@@ -47,8 +47,6 @@ public class ProductsController implements Initializable {
     @FXML
     private ImageView ivProduct;
     @FXML
-    private TextField edId;
-    @FXML
     private TextField etDescription;
     @FXML
     private TextField etPrice;
@@ -57,9 +55,9 @@ public class ProductsController implements Initializable {
     @FXML
     private Button btnSave1;
     @FXML
-    private ComboBox<?> cbWeight;
+    private ComboBox<String> cbWeight;
     @FXML
-    private ComboBox<?> cbStatus;
+    private ComboBox<String> cbStatus;
     @FXML
     private Button btnSave;
     
@@ -76,6 +74,10 @@ public class ProductsController implements Initializable {
     Scene fxmlFile;
     Parent root;
     Stage window;
+    @FXML
+    private Button btnBrowse;
+    @FXML
+    private TextField etId; //eshte nderruar nga edId ne etId
 
 
     /**
@@ -87,6 +89,12 @@ public class ProductsController implements Initializable {
         jdbc = new JdbcDao();
         showProducts();
         populateCategories();
+        
+        cbStatus.getItems().add("AVAILABLE");
+        cbStatus.getItems().add("UN-AVAILABLE");
+        
+        cbWeight.getItems().add("YES");
+        cbWeight.getItems().add("NO");
     }    
 
     @FXML
