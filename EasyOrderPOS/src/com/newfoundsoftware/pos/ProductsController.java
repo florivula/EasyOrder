@@ -6,11 +6,13 @@ package com.newfoundsoftware.pos;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,6 +23,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -32,6 +35,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javax.imageio.ImageIO;
 
 /**
@@ -82,12 +86,14 @@ public class ProductsController implements Initializable {
     Stage window;
     
     
-    File file;
+    File file; //fotoja e produktit
     
     @FXML
     private Button btnBrowse;
     @FXML
     private TextField etId; //eshte nderruar nga edId ne etId
+    @FXML
+    private TextField etBarcode;
     
 
 
@@ -116,9 +122,6 @@ public class ProductsController implements Initializable {
     private void deleteEntry(ActionEvent event) {
     }
 
-    @FXML
-    private void saveTable(ActionEvent event) {
-    }
     
     public void showProducts(){
         ObservableList<Products> list = getProductList();
@@ -242,6 +245,76 @@ public class ProductsController implements Initializable {
         }catch(Exception ex){
             System.out.println(""+ex.getMessage());
         }
+    }
+    
+    @FXML
+    private void saveProduct(ActionEvent event) {
+        Connection conn = jdbc.getConnection();
+        try{
+            String barcode = etBarcode.getText();
+            String description = etDescription.getText();
+            String price = etPrice.getText();
+            String category = cbCategories.getSelectionModel().getSelectedItem(); //ruajme vleren e zgjedhur nga combobox ne nje String "category"
+            String isweight = cbWeight.getSelectionModel().getSelectedItem();
+            String status = cbStatus.getSelectionModel().getSelectedItem();
+            Window owner = (Stage) etDescription.getScene().getWindow();
+            // kontrolli se a i jane dhene te gjitha vlerat e duhura per ruajtjen e nje produkti
+            if(barcode.isEmpty() || description.isEmpty() || price.isEmpty() || category.isEmpty() || isweight.isEmpty() || status.isEmpty()){
+                showAlert(Alert.AlertType.ERROR, owner, "Please fill the form correctly!", "Form Error");
+            }else{
+                //kontrolli nese eshte zgjedhur image
+                if(file == null){
+                    showAlert(Alert.AlertType.ERROR, owner, "Please select image!", "Form Error!");
+                }else{
+                    FileInputStream fin = new FileInputStream(file);
+                    int len = (int) file.length();
+                    PreparedStatement ps = conn.prepareStatement("INSERT INTO products(barcode, description, price, category, weight, image, status) VALUES(?,?,?,?,?,?,?)");
+                    ps.setString(1, barcode);
+                    ps.setString(2, description);
+                    ps.setString(3, price);
+                    ps.setString(4, category);
+                    ps.setString(5, isweight);
+                    ps.setBinaryStream(6, fin, len); //image
+                    ps.setString(7, status);
+                    
+                    //results
+                    int res = ps.executeUpdate();
+                    if(res > 0){
+                        showAlert(Alert.AlertType.INFORMATION, owner, "Products saved successfully", "Success!");
+                        
+                        //fshierja e te dhenave te shkruara ne fusha
+                        etBarcode.clear();
+                        etDescription.clear();
+                        etPrice.clear();
+                        
+                        cbCategories.valueProperty().set(null);
+                        cbWeight.valueProperty().set(null);
+                        cbStatus.valueProperty().set(null);
+                        
+                        ivProduct.setImage(null);
+                        file = null;
+                        
+                        showProducts();
+                    }else{
+                        showAlert(Alert.AlertType.ERROR, owner, "There were errors while processing", "Form Error!");
+                    }
+                }
+            }
+            
+        }catch(Exception ex){
+            System.out.println("" + ex.getMessage());
+        }
+    }
+    
+    public static void showAlert(Alert.AlertType alertType, Window owner, String message, String title){
+        //kodi per gjenerimin e alert window sa here qe njera prej fushave nuk mbushet
+        Alert alert = new Alert(alertType);
+        alert.setContentText(message);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.initOwner(owner);
+        alert.showAndWait();
     }
     
 }

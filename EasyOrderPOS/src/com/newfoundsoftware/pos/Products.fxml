@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="653.0" prefWidth="844.0" style="-fx-background-color: #292c2d;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.newfoundsoftware.pos.ProductsController">
+<AnchorPane id="AnchorPane" prefHeight="711.0" prefWidth="944.0" style="-fx-background-color: #292c2d;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.newfoundsoftware.pos.ProductsController">
    <children>
-      <Pane prefHeight="14.0" prefWidth="844.0" style="-fx-background-color: #1666ba;" />
+      <Pane prefHeight="14.0" prefWidth="944.0" style="-fx-background-color: #1666ba;" />
       <Button fx:id="btnUpdate" disable="true" layoutX="364.0" layoutY="47.0" mnemonicParsing="false" onAction="#editEntry" prefHeight="32.0" prefWidth="115.0" style="-fx-background-color: #1666ba;" text="Update" textFill="#deecfb">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -26,16 +26,16 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TableView fx:id="tableProducts" layoutX="257.0" layoutY="100.0" prefHeight="512.0" prefWidth="570.0" style="-fx-background-color: black; -fx-text-fill: #1666ba;">
+      <TableView fx:id="tableProducts" layoutX="257.0" layoutY="100.0" prefHeight="594.0" prefWidth="674.0" style="-fx-background-color: black; -fx-text-fill: #1666ba;">
          <columns>
             <TableColumn fx:id="colD" prefWidth="108.0" style="-fx-background-color: #111315; -fx-text-fill: #deecfb;" text="ID" />
-            <TableColumn fx:id="colDescription" minWidth="200.0" prefWidth="97.5999755859375" style="-fx-background-color: #111315; -fx-text-fill: #deecfb;" text="Description" />
-            <TableColumn fx:id="colPrice" prefWidth="97.5999755859375" style="-fx-background-color: #111315; -fx-text-fill: #deecfb;" text="Price" />
-            <TableColumn fx:id="colCategory" prefWidth="97.5999755859375" style="-fx-background-color: #111315; -fx-text-fill: #deecfb;" text="Category" />
-            <TableColumn fx:id="colStatus" prefWidth="64.800048828125" style="-fx-background-color: #111315; -fx-text-fill: #deecfb;" text="Status" />
+            <TableColumn fx:id="colDescription" minWidth="200.0" prefWidth="248.79995727539062" style="-fx-background-color: #111315; -fx-text-fill: #deecfb;" text="Description" />
+            <TableColumn fx:id="colPrice" prefWidth="86.4000244140625" style="-fx-background-color: #111315; -fx-text-fill: #deecfb;" text="Price" />
+            <TableColumn fx:id="colCategory" prefWidth="111.199951171875" style="-fx-background-color: #111315; -fx-text-fill: #deecfb;" text="Category" />
+            <TableColumn fx:id="colStatus" prefWidth="116.800048828125" style="-fx-background-color: #111315; -fx-text-fill: #deecfb;" text="Status" />
          </columns>
       </TableView>
-      <VBox layoutX="14.0" layoutY="31.0" prefHeight="596.0" prefWidth="234.0" spacing="5.0">
+      <VBox layoutX="14.0" layoutY="31.0" prefHeight="657.0" prefWidth="234.0" spacing="5.0">
          <children>
             <Pane id="imageBox" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #111315;" stylesheets="@style.css">
                <children>
@@ -49,6 +49,8 @@
             </Button>
             <Label text="ID (AutoIncrement)" textFill="#deecfb" />
             <TextField fx:id="etId" style="-fx-background-color: #111315; -fx-text-fill: white;" />
+            <Label text="Barcode" textFill="#deecfb" />
+            <TextField fx:id="etBarcode" style="-fx-background-color: #111315; -fx-text-fill: white;" />
             <Label text="Description" textFill="#deecfb" />
             <TextField fx:id="etDescription" style="-fx-background-color: #111315; -fx-text-fill: white;" />
             <Label text="Price" textFill="#deecfb" />
@@ -56,7 +58,7 @@
             <Label text="Category" textFill="#deecfb" />
             <HBox prefHeight="39.0" prefWidth="234.0" spacing="5.0">
                <children>
-                  <ComboBox fx:id="cbCategories" prefHeight="32.0" prefWidth="180.0" style="-fx-background-color: #111315;" />
+                  <ComboBox fx:id="cbCategories" prefHeight="32.0" prefWidth="180.0" style="-fx-background-color: #111315; -fx-text-fill: white;" />
                   <Button fx:id="btnSave1" mnemonicParsing="false" onAction="#actionAddCategory" prefHeight="32.0" prefWidth="54.0" style="-fx-background-color: #1666ba;" text="Add" textFill="#deecfb">
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -65,10 +67,10 @@
                </children>
             </HBox>
             <Label text="Weight" textFill="#deecfb" />
-            <ComboBox fx:id="cbWeight" prefHeight="32.0" prefWidth="238.0" style="-fx-background-color: #111315;" />
+            <ComboBox fx:id="cbWeight" prefHeight="32.0" prefWidth="238.0" style="-fx-background-color: #111315; -fx-text-fill: white;" />
             <Label text="Status" textFill="#deecfb" />
-            <ComboBox fx:id="cbStatus" prefHeight="32.0" prefWidth="243.0" style="-fx-background-color: #111315;" />
-            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#saveTable" prefHeight="32.0" prefWidth="236.0" style="-fx-background-color: #1666ba;" text="Save" textFill="#deecfb">
+            <ComboBox fx:id="cbStatus" prefHeight="32.0" prefWidth="243.0" style="-fx-background-color: #111315; -fx-text-fill: white;" />
+            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#saveProduct" prefHeight="32.0" prefWidth="236.0" style="-fx-background-color: #1666ba;" text="Save" textFill="#deecfb">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
