@@ -26,13 +26,13 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TableView fx:id="tableProducts" layoutX="257.0" layoutY="100.0" prefHeight="512.0" prefWidth="570.0" style="-fx-background-color: #111315;">
+      <TableView fx:id="tableProducts" layoutX="257.0" layoutY="100.0" prefHeight="512.0" prefWidth="570.0" style="-fx-background-color: black; -fx-text-fill: #1666ba;">
          <columns>
-            <TableColumn fx:id="colD" prefWidth="108.0" style="-fx-background-color: #1666ba; -fx-text-fill: white;" text="ID" />
-            <TableColumn fx:id="colDescription" minWidth="200.0" prefWidth="97.5999755859375" style="-fx-background-color: #1666ba;" text="Description" />
-            <TableColumn fx:id="colPrice" prefWidth="97.5999755859375" style="-fx-background-color: #1666ba;" text="Price" />
-            <TableColumn fx:id="colCategory" prefWidth="97.5999755859375" style="-fx-background-color: #1666ba;" text="Category" />
-            <TableColumn fx:id="colStatus" prefWidth="64.800048828125" style="-fx-background-color: #1666ba;" text="Status" />
+            <TableColumn fx:id="colD" prefWidth="108.0" style="-fx-background-color: #111315; -fx-text-fill: #deecfb;" text="ID" />
+            <TableColumn fx:id="colDescription" minWidth="200.0" prefWidth="97.5999755859375" style="-fx-background-color: #111315; -fx-text-fill: #deecfb;" text="Description" />
+            <TableColumn fx:id="colPrice" prefWidth="97.5999755859375" style="-fx-background-color: #111315; -fx-text-fill: #deecfb;" text="Price" />
+            <TableColumn fx:id="colCategory" prefWidth="97.5999755859375" style="-fx-background-color: #111315; -fx-text-fill: #deecfb;" text="Category" />
+            <TableColumn fx:id="colStatus" prefWidth="64.800048828125" style="-fx-background-color: #111315; -fx-text-fill: #deecfb;" text="Status" />
          </columns>
       </TableView>
       <VBox layoutX="14.0" layoutY="31.0" prefHeight="596.0" prefWidth="234.0" spacing="5.0">
