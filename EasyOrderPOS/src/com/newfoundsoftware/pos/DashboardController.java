@@ -35,6 +35,8 @@ public class DashboardController implements Initializable {
     Parent root;
     Stage window;
 
+    private static Stage pStage;
+    
     /**
      * Initializes the controller class.
      */
@@ -45,6 +47,14 @@ public class DashboardController implements Initializable {
     
     public void setUsername(String username){
         lblUsername.setText(username);
+    }
+    
+    private void setPrimaryStage(Stage pStage){
+        DashboardController.pStage = pStage; 
+    }
+    
+    public static Stage getPrimaryStage(){
+        return pStage;
     }
 
     @FXML
@@ -66,6 +76,7 @@ public class DashboardController implements Initializable {
         window.setIconified(false);
         //window.initStyle(StageStyle.UNDECORATED);
         window.setTitle(title);
+        setPrimaryStage(window);
         window.showAndWait();
     }
 

@@ -4,6 +4,8 @@
  */
 package com.newfoundsoftware.pos;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -12,6 +14,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,9 +27,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 
 /**
  * FXML Controller class
@@ -74,10 +80,15 @@ public class ProductsController implements Initializable {
     Scene fxmlFile;
     Parent root;
     Stage window;
+    
+    
+    File file;
+    
     @FXML
     private Button btnBrowse;
     @FXML
     private TextField etId; //eshte nderruar nga edId ne etId
+    
 
 
     /**
@@ -211,6 +222,26 @@ public class ProductsController implements Initializable {
         
         cbCategories.setItems(null); //e bojim empty combo-boxin para se mi shtu listen
         cbCategories.setItems(list);
+    }
+
+    @FXML
+    private void handleBrowseImage(ActionEvent event){
+        try{
+            FileChooser fc = new FileChooser();
+            //filters
+            FileChooser.ExtensionFilter ext1 = new FileChooser.ExtensionFilter("JPG files(*.jpg)","*.JPG");
+            FileChooser.ExtensionFilter ext2 = new FileChooser.ExtensionFilter("PNG files(*.png)","*.PNG");
+            
+            fc.getExtensionFilters().addAll(ext1, ext2);
+            
+            file = fc.showOpenDialog(DashboardController.getPrimaryStage()); //getPrimaryStage() method gjendet ne DashboardController.java
+            BufferedImage bf;
+            bf = ImageIO.read(file);
+            Image image = SwingFXUtils.toFXImage(bf, null);
+            ivProduct.setImage(image);
+        }catch(Exception ex){
+            System.out.println(""+ex.getMessage());
+        }
     }
     
 }
