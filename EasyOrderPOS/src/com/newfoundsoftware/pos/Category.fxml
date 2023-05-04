@@ -29,10 +29,10 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TableView fx:id="tableCategory" layoutX="21.0" layoutY="100.0" prefHeight="285.0" prefWidth="570.0" style="-fx-background-color: #111315;">
+      <TableView fx:id="tableCategory" layoutX="21.0" layoutY="100.0" prefHeight="285.0" prefWidth="570.0" style="-fx-background-color: #deecfb; -fx-text-fill: #1666ba;">
          <columns>
-            <TableColumn fx:id="colD" prefWidth="171.20001792907715" style="-fx-background-color: #1666ba;" text="ID" />
-            <TableColumn fx:id="colName" prefWidth="395.9999084472656" style="-fx-background-color: #1666ba;" text="Name" />
+            <TableColumn fx:id="colD" prefWidth="171.20001792907715" style="-fx-background-color: #111315; -fx-text-fill: #deecfb;" text="ID" />
+            <TableColumn fx:id="colName" prefWidth="395.9999084472656" style="-fx-background-color: #111315; -fx-text-fill: #deecfb;" text="Name" />
          </columns>
       </TableView>
    </children>
