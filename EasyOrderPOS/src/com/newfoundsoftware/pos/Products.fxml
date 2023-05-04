@@ -48,7 +48,7 @@
                </font>
             </Button>
             <Label text="ID (AutoIncrement)" textFill="#deecfb" />
-            <TextField fx:id="etId" style="-fx-background-color: #111315; -fx-text-fill: white;" />
+            <TextField fx:id="etId" editable="false" style="-fx-background-color: #111315; -fx-text-fill: white;" />
             <Label text="Barcode" textFill="#deecfb" />
             <TextField fx:id="etBarcode" style="-fx-background-color: #111315; -fx-text-fill: white;" />
             <Label text="Description" textFill="#deecfb" />

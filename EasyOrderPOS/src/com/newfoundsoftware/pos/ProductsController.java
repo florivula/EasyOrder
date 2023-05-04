@@ -104,6 +104,9 @@ public class ProductsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         jdbc = new JdbcDao();
+        
+        addListenerForTable();
+        
         showProducts();
         populateCategories();
         
@@ -116,10 +119,35 @@ public class ProductsController implements Initializable {
 
     @FXML
     private void editEntry(ActionEvent event) {
+        Connection conn = jdbc.getConnection();
+        Products product = tableProducts.getSelectionModel().getSelectedItem();
+        String query = "UPDATE products SET barcode=?, description=?, price=?, category=?, weight=?, status=? WHERE id=?";
+        try (PreparedStatement statement = conn.prepareStatement(query)) {
+            statement.setString(1, etBarcode.getText());
+            statement.setString(2, etDescription.getText());
+            statement.setString(3, etPrice.getText());
+            statement.setString(4, cbCategories.getSelectionModel().getSelectedItem());
+            statement.setString(5, cbWeight.getSelectionModel().getSelectedItem());
+            statement.setString(6, cbStatus.getSelectionModel().getSelectedItem());
+            statement.setInt(7, product.getId());
+            statement.executeUpdate();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
     }
 
     @FXML
     private void deleteEntry(ActionEvent event) {
+        Connection conn = jdbc.getConnection();
+        try{
+            Products product = tableProducts.getSelectionModel().getSelectedItem();
+            String query = "DELETE FROM products WHERE id = '" + product.getId() + "'"; //query per delete
+            executeQuery(query);
+            showProducts();
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     
@@ -159,7 +187,7 @@ public class ProductsController implements Initializable {
             rs = st.executeQuery(query);
             Products products;
             while(rs.next()){
-                products = new Products(rs.getInt("id"), rs.getString("description"), rs.getString("price"), rs.getString("category"), rs.getBlob("image"), rs.getString("status"));
+                products = new Products(rs.getInt("id"), rs.getString("barcode"),rs.getString("description"), rs.getString("price"), rs.getString("category"), rs.getBlob("image"), rs.getString("weight"),rs.getString("status"));
                 productList.add(products);
             }
         }catch(Exception ex){
@@ -225,6 +253,38 @@ public class ProductsController implements Initializable {
         
         cbCategories.setItems(null); //e bojim empty combo-boxin para se mi shtu listen
         cbCategories.setItems(list);
+    }
+    
+    private void addListenerForTable(){
+        tableProducts.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if(newSelection != null){
+                btnSave.setDisable(true);
+                btnUpdate.setDisable(false);
+                btnDelete.setDisable(false);
+                
+                //tfCategoryName.setText(newSelection.getName()); //newSelection kthen tables object qe i kemi kriju en tables.java
+                etId.setText("" + newSelection.getId());
+                etBarcode.setText(newSelection.getBarcode());
+                etDescription.setText(newSelection.getDescription());
+                etPrice.setText(newSelection.getPrice());
+                
+                //per combo-box
+                cbCategories.getSelectionModel().select(newSelection.getCategory());
+                cbWeight.getSelectionModel().select(newSelection.getWeight());
+                cbStatus.getSelectionModel().select(newSelection.getStatus());
+                //cbWeight.getSelectionModel().select(newSelection.getWeight());
+            }else{
+                etBarcode.setText("");
+                etDescription.setText("");
+                etPrice.setText("");
+                cbCategories.getSelectionModel().selectFirst(); //ressetimi i combo-box
+                cbStatus.getSelectionModel().selectFirst();
+                
+                btnSave.setDisable(false);
+                btnUpdate.setDisable(true);
+                btnDelete.setDisable(true);
+            }
+        });
     }
 
     @FXML
