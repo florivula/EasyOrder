@@ -131,6 +131,8 @@ public class ProductsController implements Initializable {
             statement.setString(6, cbStatus.getSelectionModel().getSelectedItem());
             statement.setInt(7, product.getId());
             statement.executeUpdate();
+            Window owner = (Stage) etDescription.getScene().getWindow();
+            showAlert(Alert.AlertType.INFORMATION, owner, "Product updated successfully!", "Product Updated");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -145,6 +147,8 @@ public class ProductsController implements Initializable {
             String query = "DELETE FROM products WHERE id = '" + product.getId() + "'"; //query per delete
             executeQuery(query);
             showProducts();
+            Window owner = (Stage) etDescription.getScene().getWindow();
+            showAlert(Alert.AlertType.INFORMATION, owner, "Product deleted successfully!", "Product Deleted");
         }catch(Exception ex){
             System.out.println(ex.getMessage());
         }
