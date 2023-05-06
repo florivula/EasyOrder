@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.newfoundsoftware.pos.DashboardController">
+<BorderPane onKeyPressed="#handleKeyPressed" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.newfoundsoftware.pos.DashboardController">
    <center>
       <AnchorPane id="AnchorPane" prefHeight="609.0" prefWidth="635.0" style="-fx-background-color: #111315;">
          <children>
