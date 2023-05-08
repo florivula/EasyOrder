@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="assets/logo.png">
 	<title>EasyOrder</title>
 	<link rel="stylesheet" href="css/style.css">
 </head>
