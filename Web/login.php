@@ -52,7 +52,7 @@
 							<i class='bx bxs-lock-alt'></i>
 							<input type="password" placeholder="Password">
 						</div>
-						<button onclick="location.href='index.html'">
+						<button onclick="location.href='admin_dashboard.html'">
 							Sign in
 						</button>
 						<p>
