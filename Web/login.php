@@ -32,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($password === $confirmPassword) {
                 $conn = new PDO("mysql:host=localhost;dbname=easyorder", "root", "");
 
-                // Check if the username or email already exists in the database
                 $query = "SELECT * FROM users WHERE username = :username OR email = :email";
                 $stmt = $conn->prepare($query);
                 $stmt->bindParam(':username', $username);
@@ -57,7 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "<script>alert('Passwords do not match');</script>";
             }
         } else {
-            // Empty fields, display an error message
             echo "<script>alert('Please fill in all fields');</script>";
         }
     }
