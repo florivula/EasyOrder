@@ -1,101 +1,152 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['action']) && $_POST['action'] === 'sign-in') {
+        // Sign-in
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $conn = new PDO("mysql:host=localhost;dbname=easyorder", "root", "");
+
+        $query = "SELECT * FROM users WHERE username = :username AND password = :password";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':password', $password);
+
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            echo "<script>alert('Login successful');</script>";
+            header("Location: admin_dashboard.html");
+            exit();
+        } else {
+            echo "<script>alert('Invalid username or password');</script>";
+        }
+    } elseif (isset($_POST['action']) && $_POST['action'] === 'sign-up') {
+        // Sign-up
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $confirmPassword = $_POST['confirm_password'];
+
+        if (!empty($username) && !empty($email) && !empty($password) && !empty($confirmPassword)) {
+            if ($password === $confirmPassword) {
+                $conn = new PDO("mysql:host=localhost;dbname=easyorder", "root", "");
+
+                // Check if the username or email already exists in the database
+                $query = "SELECT * FROM users WHERE username = :username OR email = :email";
+                $stmt = $conn->prepare($query);
+                $stmt->bindParam(':username', $username);
+                $stmt->bindParam(':email', $email);
+                $stmt->execute();
+
+                if ($stmt->rowCount() > 0) {
+                    echo "<script>alert('Username or email already exists');</script>";
+                } else {
+                    $query = "INSERT INTO users (username, email, password) VALUES (:username, :email, :password)";
+                    $stmt = $conn->prepare($query);
+                    $stmt->bindParam(':username', $username);
+                    $stmt->bindParam(':email', $email);
+                    $stmt->bindParam(':password', $password);
+                    $stmt->execute();
+
+                    echo "<script>alert('Sign-up successful');</script>";
+                    header("Location: login.php");
+                    exit();
+                }
+            } else {
+                echo "<script>alert('Passwords do not match');</script>";
+            }
+        } else {
+            // Empty fields, display an error message
+            echo "<script>alert('Please fill in all fields');</script>";
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" href="assets/logo.png">
-	<title>EasyOrder</title>
-	<link rel="stylesheet" href="./assets/css/login-style.css">
+	<link rel="icon" type="image/png" href="assets/img/name-logo.png">
+    <title>EasyOrder</title>
+    <link rel="stylesheet" href="./assets/css/login-style.css">
 </head>
 <body>
-<div id="container" class="container">
-		<div class="row">
-			<div class="col align-items-center flex-col sign-up">
-				<div class="form-wrapper align-items-center">
-					<div class="form sign-up">
-						<div class="input-group">
-							<i class='bx bxs-user'></i>
-							<input type="text" placeholder="Username">
-						</div>
-						<div class="input-group">
-							<i class='bx bx-mail-send'></i>
-							<input type="email" placeholder="Email">
-						</div>
-						<div class="input-group">
-							<i class='bx bxs-lock-alt'></i>
-							<input type="password" placeholder="Password">
-						</div>
-						<div class="input-group">
-							<i class='bx bxs-lock-alt'></i>
-							<input type="password" placeholder="Confirm password">
-						</div>
-						<button>
-							Sign up
-						</button>
-						<p>
-							<span>
-								Already have an account?
-							</span>
-							<b onclick="toggle()" class="pointer">
-								Sign in here
-							</b>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col align-items-center flex-col sign-in">
-				<div class="form-wrapper align-items-center">
-					<div class="form sign-in">
-						<div class="input-group">
-							<i class='bx bxs-user'></i>
-							<input type="text" placeholder="Username">
-						</div>
-						<div class="input-group">
-							<i class='bx bxs-lock-alt'></i>
-							<input type="password" placeholder="Password">
-						</div>
-						<button onclick="location.href='admin_dashboard.html'">
-							Sign in
-						</button>
-						<p>
-							<b>
-								Forgot password?
-							</b>
-						</p>
-						<p>
-							<span>
-								Don't have an account?
-							</span>
-							<b onclick="toggle()" class="pointer">
-								Sign up here
-							</b>
-						</p>
-					</div>
-				</div>
-				<div class="form-wrapper">
-				</div>
-			</div>
-		</div>
-		<div class="row content-row">
-			<div class="col align-items-center flex-col">
-				<div class="text sign-in">
-					<h2>
-						Welcome
-					</h2>
-				</div>
-				<div class="img sign-in">
-				</div>
-			</div>
-			<div class="col align-items-center flex-col">
-				<div class="img sign-up">
-				
-				</div>
-				<div class="text sign-up">
-					<h2>
-						Join EasyOrder
-					</h2>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script src="./assets/js/login-script.js"></script>
+    <div id="container" class="container">
+        <div class="row">
+            <div class="col align-items-center flex-col sign-up">
+                <div class="form-wrapper align-items-center">
+                    <div class="form sign-up">
+                        <form action="login.php" method="POST">
+                            <div class="input-group">
+                                <i class='bx bxs-user'></i>
+                                <input type="text" placeholder="Username" name="username">
+                            </div>
+                            <div class="input-group">
+                                <i class='bx bx-mail-send'></i>
+                                <input type="email" placeholder="Email" name="email">
+                            </div>
+                            <div class="input-group">
+                                <i class='bx bxs-lock-alt'></i>
+                                <input type="password" placeholder="Password" name="password">
+                            </div>
+                            <div class="input-group">
+                                <i class='bx bxs-lock-alt'></i>
+                                <input type="password" placeholder="Confirm password" name="confirm_password">
+                            </div>
+                            <input type="hidden" name="action" value="sign-up">
+                            <button type="submit">Sign up</button>
+                            <p>
+                                <span>Already have an account?</span>
+                                <b onclick="toggle()" class="pointer">Sign in here</b>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col align-items-center flex-col sign-in">
+                <div class="form-wrapper align-items-center">
+                    <div class="form sign-in">
+                        <form action="login.php" method="POST">
+                            <div class="input-group">
+                                <i class='bx bxs-user'></i>
+                                <input type="text" placeholder="Username" name="username">
+                            </div>
+                            <div class="input-group">
+                                <i class='bx bxs-lock-alt'></i>
+                                <input type="password" placeholder="Password" name="password">
+                            </div>
+                            <input type="hidden" name="action" value="sign-in">
+                            <button type="submit">Sign in</button>
+                            <p><b>Forgot password?</b></p>
+                            <p>
+                                <span>Don't have an account?</span>
+                                <b onclick="toggle()" class="pointer">Sign up here</b>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+                <div class="form-wrapper">
+                </div>
+            </div>
+        </div>
+        <div class="row content-row">
+            <div class="col align-items-center flex-col">
+                <div class="text sign-in">
+                    <h2>Welcome</h2>
+                </div>
+                <div class="img sign-in">
+                </div>
+            </div>
+            <div class="col align-items-center flex-col">
+                <div class="img sign-up">
+                </div>
+                <div class="text sign-up">
+                    <h2>Join EasyOrder</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./assets/js/login-script.js"></script>
 </body>
 </html>
