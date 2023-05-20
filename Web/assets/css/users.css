@@ -5,7 +5,6 @@
   
   body {
     margin: 0;
-    font-family: Arial, sans-serif;
     background-color: #f1f1f1;
   }
   
@@ -18,7 +17,6 @@
   .row {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -15px;
   }
   
   .col-md-12 {
@@ -138,7 +136,6 @@
   
   .fa {
     display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
     font-size: inherit;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
@@ -152,4 +149,3 @@
   .fa-trash::before {
     content: "\f1f8";
   }
-  
