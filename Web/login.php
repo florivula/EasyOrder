@@ -150,10 +150,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
             <div class="col align-items-center flex-col">
-                <div class="img sign-up">
-                </div>
                 <div class="text sign-up">
-                    <h2>Join EasyOrder</h2>
+                    <h2></h2>
+                </div>
+                <div class="img sign-up">
+                    <img src="assets/img/signup-logo.png">
                 </div>
             </div>
         </div>
