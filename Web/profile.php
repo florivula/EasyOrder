@@ -1,3 +1,9 @@
+<?php
+  session_start();
+
+  $username = $_SESSION['username'];
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -227,7 +233,7 @@
         
       </div>
       <div class="profile-info">
-        <h2>username</h2>
+        <h2><?php echo $username; ?></h2>
         <p>Account Created: <span id="account-created">[data]</span></p>
         <p>Business Name: <span id="business-name">[Business Name]</span></p>
       </div>
