@@ -29,10 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Sign-up
         $username = $_POST['username'];
         $email = $_POST['email'];
+        $business = $_POST['business'];
         $password = $_POST['password'];
         $confirmPassword = $_POST['confirm_password'];
 
-        if (!empty($username) && !empty($email) && !empty($password) && !empty($confirmPassword)) {
+        if (!empty($username) && !empty($email) && !empty($business) && !empty($password) && !empty($confirmPassword)) {
             if ($password === $confirmPassword) {
                 $conn = new PDO("mysql:host=localhost;dbname=easyorder", "root", "");
 
@@ -45,10 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($stmt->rowCount() > 0) {
                     echo "<script>alert('Username or email already exists');</script>";
                 } else {
-                    $query = "INSERT INTO users (username, email, password) VALUES (:username, :email, :password)";
+                    $query = "INSERT INTO users (username, email, business, password) VALUES (:username, :email, :business, :password)";
                     $stmt = $conn->prepare($query);
                     $stmt->bindParam(':username', $username);
                     $stmt->bindParam(':email', $email);
+                    $stmt->bindParam(':business', $business);
                     $stmt->bindParam(':password', $password);
                     $stmt->execute();
 
@@ -88,6 +90,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <div class="input-group">
                                 <i class='bx bx-mail-send'></i>
                                 <input type="email" placeholder="Email" name="email">
+                            </div>
+                            <div class="input-group">
+                                <i class='bx bxs-user'></i>
+                                <input type="text" placeholder="Business name" name="business">
                             </div>
                             <div class="input-group">
                                 <i class='bx bxs-lock-alt'></i>
