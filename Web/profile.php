@@ -1,7 +1,36 @@
 <?php
-  session_start();
+session_start();
 
-  $username = $_SESSION['username'];
+$username = $_SESSION['username'];
+$business = $_SESSION['business'];
+
+$host = "localhost";
+$dbusername = "root";
+$password = "";
+$dbname = "easyorder";
+
+$conn = new mysqli($host, $dbusername, $password, $dbname);
+
+// Check for connection errors
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Execute a query
+$query = "SELECT * FROM users WHERE username = '$username'";
+$result = $conn->query($query);
+
+// Fetch the data
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        // Access the data from each row
+        $username = $row["username"];
+        $email = $row["email"];
+        $business = $row["business"];
+    }
+} else {
+    echo "No records found.";
+}
 ?>
 
 <!DOCTYPE html>
@@ -235,7 +264,7 @@
       <div class="profile-info">
         <h2><?php echo $username; ?></h2>
         <p>Account Created: <span id="account-created">[data]</span></p>
-        <p>Business Name: <span id="business-name">[Business Name]</span></p>
+        <p>Business Name: <span id="business-name"><?php echo $business; ?></span></p>
       </div>
       <div class="membership-details">
         <h3>Membership Details</h3>

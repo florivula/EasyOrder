@@ -19,8 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->rowCount() > 0) {
             // per login t'suksesshem
             $_SESSION['username'] = $username;
+            $_SESSION['business'] = $business;
             echo "<script>alert('Login successful');</script>";
             header("Location: admin_dashboard.html");
+
             exit();
         } else {
             echo "<script>alert('Invalid username or password');</script>";
