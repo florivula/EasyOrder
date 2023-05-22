@@ -1,7 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
+  <title>User Profile</title>
+  <style>
+    .profile-container {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 4px;
+    }
+    .profile-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-color: #ccc;
+      /* Add image background or custom styling */
+    }
+    .profile-info {
+      margin-top: 20px;
+    }
+    .profile-info p {
+      margin-bottom: 10px;
+    }
+    .membership-details {
+      margin-top: 30px;
+    }
+    .membership-details table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .membership-details th,
+    .membership-details td {
+      padding: 8px;
+      border: 1px solid #ddd;
+    }
+    .membership-details th {
+      background-color: #f9f9f9;
+      text-align: left;
+    }
+  </style>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -9,7 +49,7 @@
 
   <title>
 
-    EasyOrder
+    Users
 
   </title>
 
@@ -23,11 +63,14 @@
 
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
   <!-- CSS Files -->
+  <link id="pagestyle" href="./assets/css/users.css" rel="stylesheet" />
   <link id="pagestyle" href="./assets/css/material-dashboard.css" rel="stylesheet" />
 
   <!-- Nepcha Analytics (nepcha.com) -->
@@ -36,13 +79,7 @@
 
 </head>
 
-
 <body class="g-sidenav-show  bg-gray-100">
-
-
-
-
-
   <aside
     class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark"
     id="sidenav-main">
@@ -138,8 +175,8 @@
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">
       <div class="mx-3">
         <!-- le qita mes na vyn nashta najsan kqyre provo qysh doket mujim mi lon si pull per "Change Accounts"
-      <a class="btn btn-outline-primary mt-4 w-100" href="" type="button">ni emen qitu</a>
-      -->
+  <a class="btn btn-outline-primary mt-4 w-100" href="" type="button">ni emen qitu</a>
+  -->
         <a class="btn bg-gradient-primary w-100" href="login.php" type="button">Sign Out</a>
       </div>
 
@@ -185,160 +222,33 @@
     </nav>
 
     <!-- End Navbar -->
-
-    <div class="container-fluid py-4">
-      <div class="row">
-        <div class="col-lg-7 position-relative z-index-2">
-          <div class="card card-plain mb-4">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="d-flex flex-column h-100">
-                    <h class="font-weight-bolder mb-0">Statistics</h>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-5 col-sm-5">
-              <div class="card  mb-2">
-                <div class="card-header p-3 pt-2">
-                  <div
-                    class="icon icon-lg icon-shape bg-gradient-dark shadow-dark shadow text-center border-radius-xl mt-n4 position-absolute">
-                    <i class="material-icons opacity-10">weekend</i>
-                  </div>
-                  <div class="text-end pt-1">
-                    <p class="text-sm mb-0 text-capitalize">Earnings (weekly)</p>
-                    <h4 class="mb-0">654</h4>
-                  </div>
-                </div>
-
-                <hr class="dark horizontal my-0">
-                <div class="card-footer p-3">
-                  <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than last week</p>
-                </div>
-              </div>
-
-              <div class="card  mb-2">
-                <div class="card-header p-3 pt-2">
-                  <div
-                    class="icon icon-lg icon-shape bg-gradient-primary shadow-primary shadow text-center border-radius-xl mt-n4 position-absolute">
-                    <i class="material-icons opacity-10">leaderboard</i>
-                  </div>
-                  <div class="text-end pt-1">
-                    <p class="text-sm mb-0 text-capitalize">Total Orders</p>
-                    <h4 class="mb-0">2,300</h4>
-                  </div>
-                </div>
-
-                <hr class="dark horizontal my-0">
-                <div class="card-footer p-3">
-                  <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+3% </span>than last month</p>
-                </div>
-              </div>
-
-            </div>
-            <div class="col-lg-5 col-sm-5 mt-sm-0 mt-4">
-              <div class="card  mb-2">
-                <div class="card-header p-3 pt-2 bg-transparent">
-                  <div
-                    class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
-                    <i class="material-icons opacity-10">store</i>
-                  </div>
-                  <div class="text-end pt-1">
-                    <p class="text-sm mb-0 text-capitalize ">Earnings (monthly)</p>
-                    <h4 class="mb-0 ">1.2k</h4>
-                  </div>
-                </div>
-
-                <hr class="horizontal my-0 dark">
-                <div class="card-footer p-3">
-                  <p class="mb-0 "><span class="text-success text-sm font-weight-bolder">+13% </span>than yesterday</p>
-                </div>
-              </div>
-
-              <div class="card ">
-                <div class="card-header p-3 pt-2 bg-transparent">
-                  <div
-                    class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                    <i class="material-icons opacity-10">person_add</i>
-                  </div>
-                  <div class="text-end pt-1">
-                    <p class="text-sm mb-0 text-capitalize ">Staff</p>
-                    <h4 class="mb-0 ">13</h4>
-                  </div>
-                </div>
-
-                <hr class="horizontal my-0 dark">
-                <div class="card-footer p-3">
-                  <p class="mb-0 ">Just updated</p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="row mt-4">
-            <div class="col-10">
-              <div class="card mb-4 ">
-                <div class="d-flex">
-                  <div
-                    class="icon icon-shape icon-lg bg-gradient-success shadow text-center border-radius-xl mt-n3 ms-4">
-                    <i class="material-icons opacity-10" aria-hidden="true">language</i>
-                  </div>
-                  <h6 class="mt-3 mb-2 ms-3 ">Waiter with most Sales</h6>
-                </div>
-                <div class="card-body p-3">
-                  <div class="row">
-                    <div class="col-lg-6 col-md-7">
-
-
-                      <div class="col-lg-6 col-md-5">
-                        <div id="map" class="mt-0 mt-lg-n4"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-12">
-            <div id="globe" class="position-absolute end-0 top-10 mt-sm-3 mt-7 me-lg-7">
-            </div>
-          </div>
-        </div>
-
-        <footer class="footer py-4  ">
-        </footer>
-
+    <div class="profile-container">
+      <div class="profile-image">
+        
       </div>
-
-  </main>
-
-  <div class="fixed-plugin">
-    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
-      <i class="material-icons py-2">settings</i>
-    </a>
-  </div>
-
-  <!--   Core JS Files   -->
-  <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-        damping: '0.5'
-      }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-  </script>
-
-  <!-- Github buttons -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-
+      <div class="profile-info">
+        <h2>username</h2>
+        <p>Account Created: <span id="account-created">[data]</span></p>
+        <p>Business Name: <span id="business-name">[Business Name]</span></p>
+      </div>
+      <div class="membership-details">
+        <h3>Membership Details</h3>
+        <table>
+          <tr>
+            <th>Membership Plan</th>
+            <td>[plani]</td>
+          </tr>
+          <tr>
+            <th>Membership Expires</th>
+            <td>[data]</td>
+          </tr>
+          <tr>
+            <th>Membership Status</th>
+            <td>[statusi]</td>
+          </tr>
+        </table>
+      </div>
+    </div>
 </body>
 
 </html>
