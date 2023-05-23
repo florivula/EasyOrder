@@ -86,7 +86,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link text-white " href="products.html">
+          <a class="nav-link text-white " href="products.php">
 
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
@@ -191,32 +191,51 @@
 
       <h>Products Table</h>
       <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Product 1</td>
-            <td>Description of Product 1</td>
-            <td>$9.99</td>
-          </tr>
-          <tr>
-            <td>Product 2</td>
-            <td>Description of Product 2</td>
-            <td>$14.99</td>
-          </tr>
-          <tr>
-            <td>Product 3</td>
-            <td>Description of Product 3</td>
-            <td>$19.99</td>
-          </tr>
-          <!-- Te shtohen aq rreshta sa nevojiten -->
-        </tbody>
-      </table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Product 1</td>
+        <td>Description of Product 1</td>
+        <td>$9.99</td>
+        <td>
+          <form action="edit_product.php" method="POST">
+            <input type="hidden" name="product_id" value="1">
+            <input type="submit" value="Edit">
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <td>Product 2</td>
+        <td>Description of Product 2</td>
+        <td>$14.99</td>
+        <td>
+          <form action="edit_product.php" method="POST">
+            <input type="hidden" name="product_id" value="2">
+            <input type="submit" value="Edit">
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <td>Product 3</td>
+        <td>Description of Product 3</td>
+        <td>$19.99</td>
+        <td>
+          <form action="edit_product.php" method="POST">
+            <input type="hidden" name="product_id" value="3">
+            <input type="submit" value="Edit">
+          </form>
+        </td>
+      </tr>
+      <!-- Additional rows as needed -->
+    </tbody>
+  </table>
 
       <footer class="footer py-4  ">
       </footer>

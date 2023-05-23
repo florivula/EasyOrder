@@ -51,10 +51,10 @@
     $product_id = $_POST["product_id"];
     
     
-    $servername = "your_servername";
-    $username = "your_username";
-    $password = "your_password";
-    $dbname = "your_database";
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "easyorder";
 
     // Create a connection
     $conn = new mysqli($servername, $username, $password, $dbname);
