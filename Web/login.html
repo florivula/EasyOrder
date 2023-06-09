@@ -1,76 +1,3 @@
-<?php
-session_start();
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['action']) && $_POST['action'] === 'sign-in') {
-        // Sign-in
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-
-        $conn = new PDO("mysql:host=localhost;dbname=easyorder", "root", "");
-
-        $query = "SELECT * FROM users WHERE username = :username AND password = :password";
-        $stmt = $conn->prepare($query);
-        $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':password', $password);
-
-        $stmt->execute();
-
-        if ($stmt->rowCount() > 0) {
-            // per login t'suksesshem
-            $_SESSION['username'] = $username;
-            $_SESSION['business'] = $business;
-            echo "<script>alert('Login successful');</script>";
-            header("Location: admin_dashboard.html");
-
-            exit();
-        } else {
-            echo "<script>alert('Invalid username or password');</script>";
-        }
-    } elseif (isset($_POST['action']) && $_POST['action'] === 'sign-up') {
-        // Sign-up
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $business = $_POST['business'];
-        $password = $_POST['password'];
-        $confirmPassword = $_POST['confirm_password'];
-
-        if (!empty($username) && !empty($email) && !empty($business) && !empty($password) && !empty($confirmPassword)) {
-            if ($password === $confirmPassword) {
-                $conn = new PDO("mysql:host=localhost;dbname=easyorder", "root", "");
-
-                $query = "SELECT * FROM users WHERE username = :username OR email = :email";
-                $stmt = $conn->prepare($query);
-                $stmt->bindParam(':username', $username);
-                $stmt->bindParam(':email', $email);
-                $stmt->execute();
-
-                if ($stmt->rowCount() > 0) {
-                    echo "<script>alert('Username or email already exists');</script>";
-                } else {
-                    $query = "INSERT INTO users (username, email, business, password) VALUES (:username, :email, :business, :password)";
-                    $stmt = $conn->prepare($query);
-                    $stmt->bindParam(':username', $username);
-                    $stmt->bindParam(':email', $email);
-                    $stmt->bindParam(':business', $business);
-                    $stmt->bindParam(':password', $password);
-                    $stmt->execute();
-
-                    echo "<script>alert('Sign-up successful');</script>";
-                    header("Location: login.php");
-                    exit();
-                }
-            } else {
-                echo "<script>alert('Passwords do not match');</script>";
-            }
-        } else {
-            echo "<script>alert('Please fill in all fields');</script>";
-        }
-    }
-}
-?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="col align-items-center flex-col sign-up">
                 <div class="form-wrapper align-items-center">
                     <div class="form sign-up">
-                        <form action="login.php" method="POST">
+                        <form action="" method="POST">
                             <div class="input-group">
                                 <i class='bx bxs-user'></i>
                                 <input type="text" placeholder="Username" name="username">
@@ -118,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="col align-items-center flex-col sign-in">
                 <div class="form-wrapper align-items-center">
                     <div class="form sign-in">
-                        <form action="login.php" method="POST">
+                        <form action="" method="POST">
                             <div class="input-group">
                                 <i class='bx bxs-user'></i>
                                 <input type="text" placeholder="Username" name="username">

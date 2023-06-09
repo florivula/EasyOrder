@@ -1,38 +1,3 @@
-<?php
-session_start();
-
-$username = $_SESSION['username'];
-$business = $_SESSION['business'];
-
-$host = "localhost";
-$dbusername = "root";
-$password = "";
-$dbname = "easyorder";
-
-$conn = new mysqli($host, $dbusername, $password, $dbname);
-
-// Check for connection errors
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Execute a query
-$query = "SELECT * FROM users WHERE username = '$username'";
-$result = $conn->query($query);
-
-// Fetch the data
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        // Access the data from each row
-        $username = $row["username"];
-        $email = $row["email"];
-        $business = $row["business"];
-    }
-} else {
-    echo "No records found.";
-}
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -146,7 +111,7 @@ if ($result->num_rows > 0) {
         </li>
 
         <li class="nav-item">
-          <a class="nav-link text-white " href="users.php">
+          <a class="nav-link text-white " href="users.html">
 
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
@@ -157,7 +122,7 @@ if ($result->num_rows > 0) {
         </li>
 
         <li class="nav-item">
-          <a class="nav-link text-white " href="products.php">
+          <a class="nav-link text-white " href="products.html">
 
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
@@ -183,7 +148,7 @@ if ($result->num_rows > 0) {
         </li>
 
         <li class="nav-item">
-          <a class="nav-link text-white " href="profile.php">
+          <a class="nav-link text-white " href="profile.html">
 
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">person</i>
@@ -212,7 +177,7 @@ if ($result->num_rows > 0) {
         <!-- le qita mes na vyn nashta najsan kqyre provo qysh doket mujim mi lon si pull per "Change Accounts"
   <a class="btn btn-outline-primary mt-4 w-100" href="" type="button">ni emen qitu</a>
   -->
-        <a class="btn bg-gradient-primary w-100" href="login.php" type="button">Sign Out</a>
+        <a class="btn bg-gradient-primary w-100" href="login.html" type="button">Sign Out</a>
       </div>
 
     </div>
@@ -262,9 +227,8 @@ if ($result->num_rows > 0) {
         
       </div>
       <div class="profile-info">
-        <h2><?php echo $username; ?></h2>
         <p>Account Created: <span id="account-created">[data]</span></p>
-        <p>Business Name: <span id="business-name"><?php echo $business; ?></span></p>
+        <p>Business Name: <span id="business-name"></span></p>
       </div>
       <div class="membership-details">
         <h3>Membership Details</h3>
